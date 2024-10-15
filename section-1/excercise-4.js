@@ -1,4 +1,5 @@
-const str = "ngoquangdung@gmail.com";
-// console.log(str.slice(-10));
-if(str.slice(-10)==='@gmail.com') console.log("Email hợp lệ");
-else console.log("Email Không hợp lệ");
+const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+};
+console.log(validateEmail("nsdfs@gmjsjdsail.commm"));
