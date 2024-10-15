@@ -1,11 +1,11 @@
-const obj = {
-    a: 1,
-    b: 2,
-    c: 3
+let coppy1 = { name: 'dung', age: '20' };
+let coppy2 = {};
+function coppy(coppy1, coppy2) {
+    for (let key in coppy1) {
+        coppy2[key] = coppy1[key];
+    }
+    console.log(coppy2.name);
+    console.log(coppy2.age);
 }
 
-const cpy = (obj) => {
-    return { ...obj }
-}
-const objCpy = cpy(obj);
-console.log(objCpy);
+coppy(coppy1, coppy2);
