@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* animation: opa 1s; */
+        }
+        .image{
+            width: 100%;
+            height: 100%;
+        }
+        .slideshow-container {
+            width: 500px;
+            height: 400px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none; 
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        @keyframes opa{
+            0%{
+                opacity: 0.5;
+            }
+            50%{
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slideshow-container">
+        <div class="image">
+            <img src="../section-2/assets/imgs/2.webp">
+        </div>
+        <a class="prev" onclick="changePicture(-1)">❮</a>
+        <a class="next" onclick="changePicture(1)">❯</a>
+    </div>
+    <script>
+        const arr = ["../section-2/assets/imgs/2.webp","../section-2/assets/imgs/Giai-Nhi-1--Nang-Tre.jpg","../section-2/assets/imgs/landscape-photography_1645-t.jpg"];
+        let i = 0;
+        const changePicture = (n)=>{
+            const picture = document.querySelector("img");
+            i+=n;
+            if(i<0){
+                i=arr.length-1;
+            }
+            if(i>arr.length-1){
+                i=0;
+            }
+            picture.setAttribute("src",arr[i]);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div style="width: 500px; height: 300px; margin: 0 auto;">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="../section-2/assets/imgs/2.webp" alt="">
+        </div>
+        <div style="width: 500px; display: flex; justify-content: space-between; margin: 0 auto; margin-top: 20px;">
+            <div style="width: 100px; height: 100px; cursor: pointer;">
+                <img onclick="load(this)" style="width: 100%; height: 100%; object-fit: cover;" src="../section-2/assets/imgs/2.webp" alt="">
+            </div>
+            <div style="width: 100px; height: 100px; cursor: pointer;">
+                <img onclick="load(this)" style="width: 100%; height: 100%; object-fit: cover;" src="../section-2/assets/imgs/Giai-Nhi-1--Nang-Tre.jpg" alt="">
+            </div>
+            <div style="width: 100px; height: 100px; cursor: pointer;">
+                <img onclick="load(this)" style="width: 100%; height: 100%; object-fit: cover;" src="../section-2/assets/imgs/landscape-photography_1645-t.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        const load = (element)=>{
+            const text = document.querySelector("img");
+            text.src = element.getAttribute("src");
+        }
+    </script>
+</body>
+</html>

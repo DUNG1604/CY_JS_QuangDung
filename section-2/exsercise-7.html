@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .exception,
+        .exception1,
+        .exception2
+         {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Nhập username của bạn">
+        </div>
+        <div class="exception">Username từ 5 đến 10 ký tự!</div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
+        </div>
+        <div class="exception1">password từ 5 đến 10 ký tự!</div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
+        </div>
+        <div class="exception2">Phải đúng định dạng email</div>
+        <div>
+            <label for="fullname">Fullname</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Nhập họ tên của bạn">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const elementForm = document.querySelector("form");
+        const submitAdd = (event) => {
+            const username = document.querySelector('input[name="username"]');
+            const password = document.querySelector('input[name="password"]');
+            const email = document.querySelector('input[name="email"]');
+            const exception = document.querySelector(".exception");
+            const exception1 = document.querySelector(".exception1");
+            const exception2 = document.querySelector(".exception2");
+
+            if (username.value.length < 5) {
+                event.preventDefault();
+                exception.style.display = "block";
+            } else {
+                exception.style.display = "none";
+            }
+            if (password.value.length < 5) {
+                event.preventDefault();
+                exception1.style.display = "block";
+            } else {
+                exception1.style.display = "none";
+            }
+            const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!regex.test(email.value)) {
+                event.preventDefault();
+                exception2.style.display = "block";
+            } else {
+                exception2.style.display = "none";
+            }
+        }
+
+        elementForm.addEventListener("submit", submitAdd);
+    </script>
+</body>
+
+</html>
