@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        ul1
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ul>
+        ul2
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <ul>
+        ul3
+    </ul>
+    <button onclick="cpyCompareBtn()">Copy Compare</button>
+    <script>
+        const cpyCompareBtn = () => {
+            const ulElements = document.querySelectorAll("ul");
+            for (let i = 0; i < ulElements[0].children.length; i++) {
+                if (ulElements[0].children[i].isEqualNode(ulElements[0].children[i])) {
+                    const node = ulElements[0].children[i].cloneNode(true);
+                    ulElements[2].appendChild(node);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
