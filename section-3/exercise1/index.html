@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="bg-gray-200 w-screen h-screen flex justify-center items-center">
+        <div class="w-64 h-auto bg-white rounded-2xl shadow-xl border-4 border-gray-100">
+            <div class="w-auto mx-3 my-2 h-6 flex justify-between">
+                <div class="current-time text-sm">08:57</div>
+                <div class="flex items-center text-xs space-x-1">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-three-quarters text-sm"></i>
+                </div>
+            </div>
+            <div class="w-auto m-3 h-28 text-right space-y-2 py-2">
+                <div class="text-gray-700 relative">
+                    <div class="valid1 hidden absolute top-[18px] left-[0px] text-[#ff0000] text-[14px]">Phải dạng số dưới 5 chữ số</div>
+                    <div class="valid2 hidden absolute top-[85px] left-[0px] text-[#ff0000] text-[14px]">Phải dạng số dưới 5 chữ số</div>
+                    <div class="valid3 hidden absolute top-[51px] left-[0px] text-[#ff0000] text-[14px]">Phải dạng phép tính</div>
+                    <input class="input1 w-full" type="text" placeholder="Nhập số thứ nhất">
+                    <input class="input3 w-full mt-[10px]" type="text" placeholder="Nhập phép tính">
+                    <input class="input2 w-full mt-[10px]" type="text" placeholder="Nhập số thứ hai">
+                </div>
+                <div class="response-input text-black font-bold text-3xl"></div>
+            </div>
+            <div class="w-auto m-1 h-auto mb-2 mt-[60px]">
+                <div class="m-2 flex justify-between">
+                    <div onclick="fillNumber(7, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        7</div>
+                    <div onclick="fillNumber(8, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        8</div>
+                    <div onclick="fillNumber(7, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        9</div>
+                    <div onclick="fillNumber('x', event)"
+                        class="cursor-pointer bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-white font-medium text-xl flex justify-center items-center">
+                        x</div>
+                </div>
+                <div class="m-2 flex justify-between">
+                    <div onclick="fillNumber(4, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        4</div>
+                    <div onclick="fillNumber(5, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        5</div>
+                    <div onclick="fillNumber(6, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        6</div>
+                    <div onclick="fillNumber('-', event)"
+                        class="cursor-pointer bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-white font-medium text-xl flex justify-center items-center">
+                        -</div>
+                </div>
+                <div class="m-2 flex justify-between">
+                    <div onclick="fillNumber(1, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        1</div>
+                    <div onclick="fillNumber(2, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        2</div>
+                    <div onclick="fillNumber(3, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-12 h-12 text-black font-medium flex justify-center items-center">
+                        3</div>
+                    <div onclick="fillNumber('+', event)"
+                        class="cursor-pointer bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-white font-medium text-xl flex justify-center items-center">
+                        +</div>
+                </div>
+                <div class="m-2 flex justify-between">
+                    <div onclick="fillNumber(0, event)"
+                        class="cursor-pointer bg-gray-200 shadow-md rounded-2xl w-full h-12 text-black font-medium flex justify-center items-center">
+                        0</div>
+                    <div class="flex w-full ml-3 justify-between">
+                        <div onclick="deleteInput(event)"
+                            class="cursor-pointer bg-yellow-100 shadow-md rounded-2xl w-12 h-12 text-yellow-600 font-medium flex justify-center items-center">
+                            C</div>
+                        <div
+                            class="cursor-pointer bg-yellow-500 shadow-md rounded-2xl w-12 h-12 text-white font-medium text-xl flex justify-center items-center">
+                            /</div>
+                    </div>
+                </div>
+                <div class="m-2 flex justify-between">
+                    <div onclick="cal()"
+                        class="hover:bg-green-600 cursor-pointer bg-green-500 shadow-md rounded-2xl w-full h-12 text-white font-medium text-xl flex justify-center items-center">
+                        =</div>
+                </div>
+                <div class="flex justify-center mt-5">
+                    <div class="w-20 h-1 bg-gray-100 rounded-l-xl rounded-r-xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>

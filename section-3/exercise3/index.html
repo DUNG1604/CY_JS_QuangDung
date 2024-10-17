@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main-container" style="width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <div class="notification">Còn 2 sự trợ giúp</div>
+        <div class="question">Sông nào chảy qua Hà Nội</div>
+        <div style="width: 400px; height: 200px; margin-top: 20px;margin-bottom: 30px;">
+            <img style="width: 100%; height: 100%; object-fit: cover;"  src="" alt="">
+        </div>
+        <div class="list-char" style="display: flex; gap: 5px; margin-bottom: 20px;"></div>
+        <div class="answer">
+        </div>
+        <div class="user-answer">
+            <input class="input-user" type="text">
+            <button onclick="submitGame()">Next</button>
+        </div>
+        <div onclick="nextFunc()" class="next-btn" style="font-size: 30px; cursor: pointer; margin-top: 20px; display: none;">Màn Tiếp</div>
+        <div class="countdown"></div>
+    </div>
+    <div onclick="winFunc()" class="win-btn" style="font-size: 30px; cursor: pointer; margin-top: 20px; display: none; text-align: center;">Bạn đã chiến thắng game!</div>
+    <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</body>
+
+</html>
