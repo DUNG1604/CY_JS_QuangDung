@@ -19,6 +19,11 @@ const addImg = (res) => {
             newImgContainer.appendChild(deleteBtn);
             listImg.appendChild(newImgContainer);
             inputBtn.value = "";
+            deleteBtn.addEventListener("click", (event) => {
+                const deleteBtn = event.target;
+                const imgContainer = deleteBtn.closest('.img-container');
+                imgContainer.remove();
+            })
             return
         }
         const fileReader = new FileReader();
