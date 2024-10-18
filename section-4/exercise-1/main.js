@@ -10,7 +10,7 @@ const addImg = (res) => {
             const newImgContainer = document.createElement("div");
             newImgContainer.classList.add("img-container");
             const newImg = document.createElement("img");
-            newImg.src = url;
+            newImg.src = "https://niithanoi.edu.vn/pic/AboutUs/thay-Luan-web.jpg";
             newImg.classList.add("img-upload");
             const deleteBtn = document.createElement("button");
             deleteBtn.classList.add("delete-btn");
