@@ -4,15 +4,17 @@ const elementAddItem = document.querySelector(".btn-add");
 const elementInputTitle = document.querySelector(".input-title");
 const elementInputContent = document.querySelector("#input-content");
 const elementListItem = document.querySelector(".item-container");
+let checkAdd = true;
 
 elementAddItem.addEventListener("click", () => {
+    checkAdd = true;
     elementForm.style.display = "block";
 });
 
 let listTodo = JSON.parse(localStorage.getItem("list")) || [];
 
 const renderLists = () => {
-    elementListItem.innerHTML = ''; 
+    elementListItem.innerHTML = '';
     listTodo.forEach((item, index) => {
         const listItem = document.createElement("div");
         listItem.classList.add("item");
@@ -31,28 +33,40 @@ const renderLists = () => {
 
         const deleteBtn = listItem.querySelector(".delete-item-btn");
         deleteBtn.addEventListener("click", () => deleteItem(index));
+        const updateBtn = listItem.querySelector(".change-item-btn");
+        // updateBtn.addEventListener("click")
     });
 };
 
 const submitForm = (e) => {
     e.preventDefault();
-    const title = elementInputTitle.value;
-    const content = elementInputContent.value;
-    const itemTodo = {
-        title: title,
-        content: content
-    };
-    listTodo.push(itemTodo);
-    localStorage.setItem("list", JSON.stringify(listTodo));
+    if (checkAdd == true) {
+        const title = elementInputTitle.value;
+        const content = elementInputContent.value;
+        const itemTodo = {
+            title: title,
+            content: content
+        };
+        listTodo.push(itemTodo);
+        localStorage.setItem("list", JSON.stringify(listTodo));
+    } else {
+
+
+    }
 
     renderLists();
     elementForm.style.display = "none";
 }
 
 const deleteItem = (index) => {
-    listTodo.splice(index, 1); 
-    localStorage.setItem("list", JSON.stringify(listTodo)); 
-    renderLists(); 
+    listTodo.splice(index, 1);
+    localStorage.setItem("list", JSON.stringify(listTodo));
+    renderLists();
+}
+
+const updateItem = (index) => {
+    checkAdd = false;
+    elementForm.style.display = "block";
 }
 
 renderLists();
