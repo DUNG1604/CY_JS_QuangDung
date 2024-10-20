@@ -1,24 +1,20 @@
-// Lấy các phần tử cần sử dụng
 const elementForm = document.querySelector(".add-container");
 const elementAddform = document.querySelector(".add-form");
 const elementAddItem = document.querySelector(".btn-add");
 const elementInputTitle = document.querySelector(".input-title");
 const elementInputContent = document.querySelector("#input-content");
 const elementListItem = document.querySelector(".item-container");
-let checkAdd = true; // Biến kiểm tra trạng thái Thêm/Sửa
+let checkAdd = true; 
 
-// Khi nhấn nút "Thêm", hiển thị form để thêm mục mới
 elementAddItem.addEventListener("click", () => {
-    checkAdd = true; // Đặt về chế độ thêm mới
-    elementForm.style.display = "block"; // Hiển thị form
+    checkAdd = true; 
+    elementForm.style.display = "block";
 });
 
-// Lấy danh sách từ localStorage hoặc khởi tạo mảng rỗng
 let listTodo = JSON.parse(localStorage.getItem("list")) || [];
 
-// Hàm render lại danh sách các mục todo
 const renderLists = () => {
-    elementListItem.innerHTML = ''; // Xóa nội dung cũ
+    elementListItem.innerHTML = ''; 
     listTodo.forEach((item, index) => {
         const listItem = document.createElement("div");
         listItem.classList.add("item");
