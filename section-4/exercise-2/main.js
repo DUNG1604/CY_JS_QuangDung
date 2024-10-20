@@ -90,6 +90,5 @@ const updateItem = (index) => {
     elementAddform.setAttribute('data-index', index);
 };
 
-elementAddform.addEventListener("submit", submitForm);
 
 renderLists();
