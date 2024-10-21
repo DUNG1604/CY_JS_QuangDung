@@ -1,3 +1,26 @@
+function Observe() {
+    this.listeners = {
+        play: new Set(),
+        pause: new Set(),
+        next: new Set(),
+        prev: new Set(),
+    };
+
+    this.subscribe = function (eventName, listener) {
+        this.listeners[eventName].add(listener);
+    };
+
+    this.unsubscribe = function (eventName, listener) {
+        this.listeners[eventName].delete(listener);
+    };
+
+    this.notify = function (eventName) {
+        if (this.listeners[eventName]) {
+            this.listeners[eventName].forEach(listener => listener());
+        }
+    };
+}
+
 const preBtn = document.querySelector(".pre-btn");
 const nextBtn = document.querySelector(".next-btn");
 const audio = document.querySelector(".audio-song");
@@ -53,9 +76,11 @@ const isPlayProxy = new Proxy({
     set: (target, prop, value) => {
         target[prop] = value;
         if (value) {
-            playAudio();
+            pub.notify("play");
+            // playAudio();
         } else {
-            pauseAudio();
+            // pauseAudio();
+            pub.notify("pause");
         }
         return true;
     },
@@ -79,6 +104,7 @@ const renderList = () => {
         `;
         songItem.addEventListener("click", () => {
             currentSongProxy.currentSong = index;
+            isPlayProxy.isPlay = true;
         });
         songListContainer.appendChild(songItem);
     });
@@ -93,6 +119,7 @@ const changeSong = (step) => {
     let newIndex = currentSongProxy.currentSong + step;
     if (newIndex >= listSongProxy.list.length) newIndex = 0;
     if (newIndex < 0) newIndex = listSongProxy.list.length - 1;
+    isPlayProxy.isPlay = true;
     currentSongProxy.currentSong = newIndex;
 };
 
@@ -171,4 +198,21 @@ const addAudio = (res) => {
     }
 }
 
+let pub = new Observe();
+const initPub = () => {
+    pub.subscribe('play', () => {
+        playAudio();
+    });
+    pub.subscribe('pause', () => {
+        pauseAudio();
+    });
+    pub.subscribe('next', () => {
+        changeSong(1);
+    });
+    pub.subscribe('prev', () => {
+        changeSong(-1);
+    });
+};
+
+initPub();
 playSong(currentSongProxy.currentSong);
