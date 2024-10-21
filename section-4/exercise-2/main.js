@@ -73,7 +73,9 @@ const submitForm = (e) => {
     elementForm.style.display = "none";
     renderLists();
 };
-
+const deleteBtn = ()=>{
+    
+}
 
 const updateItem = (index) => {
     checkAdd = false; 
