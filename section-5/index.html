@@ -22,7 +22,10 @@
                 <audio class="audio-song w-full custom-audio" controls autoplay src=""></audio>
             </div>
             <div class="mt-2">
-                <input type="range" class="progress-bar w-full" value="0" min="0" max="100" step="1" />
+                <!-- <input type="range" class="progress-bar w-full" value="0" min="0" max="100" step="1" /> -->
+                <div class="progress-bar-container w-full h-2 bg-gray-300 rounded-lg cursor-pointer relative mt-2">
+                    <div class="progress-fill h-full bg-teal-500 rounded-lg" style="width: 0%;"></div>
+                </div>
             </div>
             <div class="time-display flex justify-between text-sm mt-1">
                 <span class="current-time"></span>

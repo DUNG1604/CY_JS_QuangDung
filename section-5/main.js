@@ -148,21 +148,51 @@ const formatTime = (time) => {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
 
+// 
+
+const progressBarContainer = document.querySelector('.progress-bar-container');
+const progressFill = document.querySelector('.progress-fill');
+let isDragging = false;
+
+const handleProgressUpdate = (event) => {
+    const { clientX } = event;
+    // console.log("clientx", clientX);
+    const rect = progressBarContainer.getBoundingClientRect();
+    // console.log("rect", rect);
+    const offsetX = clientX - rect.left;
+    const percentage = offsetX / rect.width;
+    // console.log("audio duration", audio.duration)
+    // console.log("audio current", audio.currentTime)
+    const newTime = percentage * audio.duration;
+    progressFill.style.width = `${percentage * 100}%`;
+    audio.currentTime = newTime;
+};
+
+progressBarContainer.addEventListener('mousedown', (event) => {
+    isDragging = true;
+    handleProgressUpdate(event);
+});
+
+document.addEventListener('mousemove', (event) => {
+    if (isDragging) {
+        handleProgressUpdate(event);
+    }
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
 const updateProgressBar = () => {
     const { duration, currentTime } = audio;
-    const progress = (currentTime / duration) * 100;
-    progressBar.value = progress;
+    const percentage = (currentTime / duration) * 100;
+    progressFill.style.width = `${percentage}%`;
 
     currentTimeDisplay.innerHTML = formatTime(currentTime);
     durationTimeDisplay.innerHTML = formatTime(duration);
 };
 
-progressBar.addEventListener("input", () => {
-    const newTime = (progressBar.value * audio.duration) / 100;
-    audio.currentTime = newTime;
-});
-
-audio.addEventListener("timeupdate", updateProgressBar);
+audio.addEventListener('timeupdate', updateProgressBar);
 
 const elementUpload = document.querySelector(".input-btn");
 elementUpload.addEventListener("change", (e) => {
